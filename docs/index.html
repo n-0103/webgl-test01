@@ -68,9 +68,10 @@
         });
       };
       document.body.appendChild(script);
-      window.PlaywithReceiveMessage = function({ str1, str2 })
+      window.PlaywithReceiveMessage = function({ arg })
       {
-        unityInstance.SendMessage("JsMediator", "JsReceiveMessage", Pointer_stringify(str1) + '#' + Pointer_stringify(str2));
+        var jsonStr = JSON.parse(arg);
+        unityInstance.SendMessage("JsMediator", "JsReceiveMessage", jsonStr.name + '#' + jsonStr.message);
       }
     </script>
   </body>
